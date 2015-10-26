@@ -2,6 +2,10 @@
 import os.path
 
 SITE_SRC_ROOT = os.path.dirname(__file__)
+
+# You must set this: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+SECRET_KEY = ''
+
 LOG_FILENAME = 'django.osqa.log'
 LOGGING = {
     'version': 1,
@@ -41,11 +45,13 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 TEMPLATE_DEBUG = DEBUG
 INTERNAL_IPS = ('127.0.0.1',)
+
+# Set this for any hostnames you want the app to be accesible from
 ALLOWED_HOSTS = ('yourhostname.com',)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'osqa',
         'USER': 'root',
         'PASSWORD': '',
