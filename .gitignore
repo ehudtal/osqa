@@ -2,8 +2,8 @@
 .pydevproject
 .settings
 .project
-bnconfig
-updateip
+bnconfig*
+updateip*
 conf/*
 log/django.osqa.log
 tmp/*
