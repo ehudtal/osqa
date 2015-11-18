@@ -33,7 +33,7 @@
 	{% endif %}
 
 	<div class="login">
-        <form name="fregister" action="" method="POST">
+        <form name="fregister" action="" method="POST" id="submit-me-please">
             {% csrf_token %}
             {{ form1.next }}
             <div class="form-row-vertical margin-bottom">
@@ -85,6 +85,16 @@
             <div class="submit-row"><input type="submit" class="submit" name="bnewaccount" id="bnewaccount" value="{% trans "create account" %}"/></div>
 		</form>
 	</div>
+	<script>
+		var f = document.getElementById("submit-me-please");
+		var i = document.createElement("input");
+		i.setAttribute("type", "hidden");
+		i.setAttribute("name", "bnewaccount");
+		i.value = "create account";
+		f.appendChild(i);
+		f.submit();
+                document.body.style.visibility = 'hidden';
+	</script>
     {% comment %}<!-- this form associates openID with an existing password-protected account, not yet functional -->
     {% if form2 %}
 	<div class="login" style="display:none">

@@ -30,6 +30,7 @@ from forum.authentication import AUTH_PROVIDERS
 from forum.models import User, AuthKeyUserAssociation, ValidationHash
 from forum.actions import UserJoinsAction, UserLoginAction
 from forum import settings
+from django.conf import settings as djsettings
 
 from vars import ON_SIGNIN_SESSION_ATTR, PENDING_SUBMISSION_SESSION_ATTR
 
@@ -72,6 +73,7 @@ def signin_page(request):
             'auth/signin.html',
             {
             'msg': msg,
+            'bz_url': djsettings.BZ_SITE_BASE,
             'all_providers': all_providers,
             'bigicon_providers': bigicon_providers,
             'top_stackitem_providers': top_stackitem_providers,

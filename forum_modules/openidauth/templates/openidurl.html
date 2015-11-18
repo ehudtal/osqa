@@ -18,3 +18,22 @@
     </table>
 </fieldset>
 
+<script src="{{ bz_url }}/openid/url_script"></script>
+<script>
+
+if(location.search != '?plain_login') {
+ if(bz_current_user_openid_url) {
+   var it = document.getElementById("openid_identifier");
+   it.value = bz_current_user_openid_url;
+   while(it && it.tagName != 'FORM')
+     it = it.parentNode;
+   if(it) {
+     document.body.style.visibility = 'hidden';
+     it.submit();
+   }
+ } else {
+   location.href = "{{ bz_url }}/openid/auto_login?back_to=" + encodeURIComponent(location.href);
+ }
+}
+</script>
+
