@@ -540,7 +540,7 @@ class SubscriptionSettings(models.Model):
 
     #notify if
     member_joins = models.CharField(max_length=1, default='n')
-    new_question = models.CharField(max_length=1, default='n')
+    new_question = models.CharField(max_length=1, default='i')
     new_question_watched_tags = models.CharField(max_length=1, default='i')
     subscribed_questions = models.CharField(max_length=1, default='i')
 
