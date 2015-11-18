@@ -25,6 +25,12 @@ def render(template=None, tab=None, tab_title='', weight=500, tabbed=True):
             if request.user.is_authenticated():
                 ONLINE_USERS[request.user] = datetime.now()
 
+            # This makes this OSQA instance private so that only authenticated
+            # users can see it
+            else:
+                return HttpResponseRedirect(reverse('auth_signin'))
+
+
             if isinstance(context, HttpResponse):
                 return context
 
