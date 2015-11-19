@@ -63,9 +63,14 @@ def signin_page(request):
     context for context in all_providers if context.mode == 'STACK_ITEM' and can_show(context)
     ], sort)
 
+    allow_auto_redirect = "true"
+    if request.user.is_authenticated():
+        allow_auto_redirect = "false"
+
     try:
         msg = request.session['auth_error']
         del request.session['auth_error']
+        allow_auto_redirect = "false"
     except:
         msg = None
 
@@ -74,6 +79,7 @@ def signin_page(request):
             {
             'msg': msg,
             'bz_url': djsettings.BZ_SITE_BASE,
+            'allow_auto_redirect': allow_auto_redirect,
             'all_providers': all_providers,
             'bigicon_providers': bigicon_providers,
             'top_stackitem_providers': top_stackitem_providers,
