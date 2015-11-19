@@ -441,4 +441,4 @@ def forward_suspended_user(request, user, show_private_msg=True):
 @decorate.withfn(login_required)
 def signout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(djsettings.BZ_SITE_BASE)
